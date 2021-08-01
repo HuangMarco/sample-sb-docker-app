@@ -52,7 +52,7 @@ pipeline {
 
         stage('Build code and build the docker image') {
             when {
-                branch 'develop'
+                branch 'main'
             }
             steps {
                 sh """
