@@ -24,7 +24,7 @@ pipeline {
             }
         }
 
-        stage('Initialize the container'){
+        // stage('Initialize the container'){
             // steps{
             //     sh """
             //     echo "Start to install maven, switch to /tmp directory"
@@ -40,7 +40,7 @@ pipeline {
             //     fi
             //     """
             // }
-        }
+        // }
 
         // stage('Code Checkout') {
         //     steps {
@@ -84,6 +84,7 @@ pipeline {
                     export PATH=/tmp/apache-maven-3.8.1/bin:$PATH
                     mvn -v
                     echo "Maven installation completed."
+
                 fi
 
                 echo "Doing Maven build and execute docker plugin"
