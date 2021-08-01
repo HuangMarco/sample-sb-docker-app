@@ -34,7 +34,7 @@ pipeline {
             }
         }
 
-        stage(' Unit Testing') {
+        stage('Unit Testing') {
             steps {
                 sh """
                 echo "Running Unit Tests"
@@ -50,13 +50,15 @@ pipeline {
             }
         }
 
-        stage('Build Deploy Code') {
+        stage('Build code and build the docker image') {
             when {
                 branch 'develop'
             }
             steps {
                 sh """
-                echo "Building Artifact"
+                echo "Doing Maven build and execute docker plugin"
+                cd sample-sb-docker-app
+                mvn clean install -Ddocker
                 """
 
                 sh """
