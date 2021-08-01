@@ -57,7 +57,7 @@ pipeline {
             steps {
                 sh """
                 echo "Doing Maven build and execute docker plugin"
-                cd sample-sb-docker-app
+                cd /var/jenkins_home/workspace/Build_sample-sb-docker-app_main
                 mvn clean install -Ddocker
                 """
 
