@@ -24,6 +24,24 @@ pipeline {
             }
         }
 
+        stage('Initialize the container'){
+            steps{
+                sh """
+                echo "Start to install maven, switch to /tmp directory"
+                cd /tmp
+                if ! command -v mvn &> /dev/null
+                then
+                    echo "mvn command could not be found and will install maven"
+                    curl -X GET https://mirrors.gigenet.com/apache/maven/maven-3/3.8.1/binaries/apache-maven-3.8.1-bin.tar.gz -o apache-maven-3.8.1-bin.tar.gz
+                    tar -xzvf apache-maven-3.8.1-bin.tar.gz
+                    export PATH=/tmp/apache-maven-3.8.1/bin:$PATH
+                    echo "Maven installation completed."
+                    exit
+                fi
+                """
+            }
+        }
+
         stage('Code Checkout') {
             steps {
                 checkout([
