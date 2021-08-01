@@ -2,14 +2,14 @@ pipeline {
 
     agent {
         node {
-            label 'master'
+            label 'main'
         }
     }
 
     options {
         buildDiscarder logRotator(
-                    daysToKeepStr: '16',
-                    numToKeepStr: '10'
+                    daysToKeepStr: '30',
+                    numToKeepStr: '20'
             )
     }
 
@@ -47,7 +47,7 @@ pipeline {
                 checkout([
                     $class: 'GitSCM',
                     branches: [[name: 'main']],
-                    userRemoteConfigs: [[url: 'https://github.com/HuangMarco/sample-sb-docker-app.git -4']]
+                    userRemoteConfigs: [[url: 'https://github.com/HuangMarco/sample-sb-docker-app.git']]
                 ])
             }
         }
