@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sample-application
+  labels:
+    tier: networking
+spec:
+  ports:
+  - port: {{ .Values.service.port }}
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: sample-application
+  type: {{ .Values.service.type }}
