@@ -95,9 +95,9 @@ pipeline {
                 docker tag demo:latest anbclub/cicdsbk8s:latest
                 docker image ls
                 docker push anbclub/cicdsbk8s:v1
-                """
 
-                sh """
+
+
                 echo "Install helm3"
                 curl -X GET "https://get.helm.sh/helm-v3.6.2-linux-amd64.tar.gz" -o helm-v3.6.3.tar.gz
                 tar -xzvf helm-v3.6.2-linux-amd64.tar.gz
